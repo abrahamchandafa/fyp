@@ -1,0 +1,9 @@
+  Device     : cpu
+  Checkpoint : C:\Users\abrah\programming\FYP\claude\pdr\checkpoints\pdr_model.pt
+
+  Processing: translate_x
+    Loaded 75 frames from C:\Users\abrah\programming\FYP\claude\generation\output\translate_x\frames
+    Saved 75 corrected frames -> C:\Users\abrah\programming\FYP\claude\pdr\output\translate_x\frames
+    Video -> C:\Users\abrah\programming\FYP\claude\pdr\output\translate_x\translate_x_corrected.mp4
+
+  Done.

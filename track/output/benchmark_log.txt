@@ -1,0 +1,589 @@
+
+############################################################
+  DoF: translate_x
+############################################################
+
+  Running BlobCentroid on translate_x ...
+
+------------------------------------------------------------
+  Algorithm    : BlobCentroid
+  DoF          : translate_x
+  Frames       : 75
+  Total tracked: 1526
+  Mean dx      : -4.090 px/frame (std=1.893)
+  Mean dy      : +0.346 px/frame (std=1.893)
+  Mean speed   : 7.773 px/frame
+  Direction    : -4.8deg
+  GT dx        : -5.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 0.910 px/frame
+  Error dy     : 0.346 px/frame
+------------------------------------------------------------
+
+  Running LucasKanade on translate_x ...
+
+------------------------------------------------------------
+  Algorithm    : LucasKanade
+  DoF          : translate_x
+  Frames       : 75
+  Total tracked: 666
+  Mean dx      : -0.189 px/frame (std=1.708)
+  Mean dy      : -0.003 px/frame (std=0.166)
+  Mean speed   : 0.295 px/frame
+  Direction    : STATIONARY / ZOOM / ROLL
+  GT dx        : -5.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 4.811 px/frame
+  Error dy     : 0.003 px/frame
+------------------------------------------------------------
+
+  Running DenseFlow on translate_x ...
+
+------------------------------------------------------------
+  Algorithm    : DenseFlow
+  DoF          : translate_x
+  Frames       : 75
+  Total tracked: 1729
+  Mean dx      : -4.594 px/frame (std=1.014)
+  Mean dy      : +0.063 px/frame (std=0.610)
+  Mean speed   : 5.184 px/frame
+  Direction    : -0.8deg
+  GT dx        : -5.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 0.406 px/frame
+  Error dy     : 0.063 px/frame
+------------------------------------------------------------
+
+  Running ORB on translate_x ...
+
+------------------------------------------------------------
+  Algorithm    : ORB
+  DoF          : translate_x
+  Frames       : 75
+  Total tracked: 653
+  Mean dx      : -5.106 px/frame (std=10.371)
+  Mean dy      : +1.135 px/frame (std=9.212)
+  Mean speed   : 14.764 px/frame
+  Direction    : -12.5deg
+  GT dx        : -5.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 0.106 px/frame
+  Error dy     : 1.135 px/frame
+------------------------------------------------------------
+
+  Running FrameDiff on translate_x ...
+
+------------------------------------------------------------
+  Algorithm    : FrameDiff
+  DoF          : translate_x
+  Frames       : 75
+  Total tracked: 1942
+  Mean dx      : -3.837 px/frame (std=2.108)
+  Mean dy      : +0.272 px/frame (std=1.922)
+  Mean speed   : 8.828 px/frame
+  Direction    : -4.0deg
+  GT dx        : -5.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 1.163 px/frame
+  Error dy     : 0.272 px/frame
+------------------------------------------------------------
+
+############################################################
+  DoF: translate_y
+############################################################
+
+  Running BlobCentroid on translate_y ...
+
+------------------------------------------------------------
+  Algorithm    : BlobCentroid
+  DoF          : translate_y
+  Frames       : 75
+  Total tracked: 1523
+  Mean dx      : -0.386 px/frame (std=1.799)
+  Mean dy      : +4.573 px/frame (std=1.922)
+  Mean speed   : 7.867 px/frame
+  Direction    : -85.2deg
+  GT dx        : +0.000 px/frame
+  GT dy        : +5.000 px/frame
+  Error dx     : 0.386 px/frame
+  Error dy     : 0.427 px/frame
+------------------------------------------------------------
+
+  Running LucasKanade on translate_y ...
+
+------------------------------------------------------------
+  Algorithm    : LucasKanade
+  DoF          : translate_y
+  Frames       : 75
+  Total tracked: 740
+  Mean dx      : +0.001 px/frame (std=0.090)
+  Mean dy      : -0.000 px/frame (std=0.152)
+  Mean speed   : 0.147 px/frame
+  Direction    : STATIONARY / ZOOM / ROLL
+  GT dx        : +0.000 px/frame
+  GT dy        : +5.000 px/frame
+  Error dx     : 0.001 px/frame
+  Error dy     : 5.000 px/frame
+------------------------------------------------------------
+
+  Running DenseFlow on translate_y ...
+
+------------------------------------------------------------
+  Algorithm    : DenseFlow
+  DoF          : translate_y
+  Frames       : 75
+  Total tracked: 1711
+  Mean dx      : -0.033 px/frame (std=0.643)
+  Mean dy      : +4.530 px/frame (std=0.628)
+  Mean speed   : 5.207 px/frame
+  Direction    : -89.6deg
+  GT dx        : +0.000 px/frame
+  GT dy        : +5.000 px/frame
+  Error dx     : 0.033 px/frame
+  Error dy     : 0.470 px/frame
+------------------------------------------------------------
+
+  Running ORB on translate_y ...
+
+------------------------------------------------------------
+  Algorithm    : ORB
+  DoF          : translate_y
+  Frames       : 75
+  Total tracked: 659
+  Mean dx      : -0.428 px/frame (std=9.237)
+  Mean dy      : +2.702 px/frame (std=12.915)
+  Mean speed   : 14.382 px/frame
+  Direction    : -81.0deg
+  GT dx        : +0.000 px/frame
+  GT dy        : +5.000 px/frame
+  Error dx     : 0.428 px/frame
+  Error dy     : 2.298 px/frame
+------------------------------------------------------------
+
+  Running FrameDiff on translate_y ...
+
+------------------------------------------------------------
+  Algorithm    : FrameDiff
+  DoF          : translate_y
+  Frames       : 75
+  Total tracked: 2581
+  Mean dx      : -0.269 px/frame (std=1.648)
+  Mean dy      : +3.710 px/frame (std=1.793)
+  Mean speed   : 8.754 px/frame
+  Direction    : -85.9deg
+  GT dx        : +0.000 px/frame
+  GT dy        : +5.000 px/frame
+  Error dx     : 0.269 px/frame
+  Error dy     : 1.290 px/frame
+------------------------------------------------------------
+
+############################################################
+  DoF: translate_z
+############################################################
+
+  Running BlobCentroid on translate_z ...
+
+------------------------------------------------------------
+  Algorithm    : BlobCentroid
+  DoF          : translate_z
+  Frames       : 75
+  Total tracked: 1526
+  Mean dx      : -0.432 px/frame (std=2.214)
+  Mean dy      : +0.392 px/frame (std=1.880)
+  Mean speed   : 9.032 px/frame
+  Direction    : -42.2deg
+  GT dx        : +0.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 0.432 px/frame
+  Error dy     : 0.392 px/frame
+------------------------------------------------------------
+
+  Running LucasKanade on translate_z ...
+
+------------------------------------------------------------
+  Algorithm    : LucasKanade
+  DoF          : translate_z
+  Frames       : 75
+  Total tracked: 428
+  Mean dx      : -0.451 px/frame (std=2.416)
+  Mean dy      : -0.007 px/frame (std=0.274)
+  Mean speed   : 0.601 px/frame
+  Direction    : +0.9deg
+  GT dx        : +0.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 0.451 px/frame
+  Error dy     : 0.007 px/frame
+------------------------------------------------------------
+
+  Running DenseFlow on translate_z ...
+
+------------------------------------------------------------
+  Algorithm    : DenseFlow
+  DoF          : translate_z
+  Frames       : 75
+  Total tracked: 1739
+  Mean dx      : -0.440 px/frame (std=1.750)
+  Mean dy      : +0.174 px/frame (std=1.071)
+  Mean speed   : 6.731 px/frame
+  Direction    : -21.6deg
+  GT dx        : +0.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 0.440 px/frame
+  Error dy     : 0.174 px/frame
+------------------------------------------------------------
+
+  Running ORB on translate_z ...
+
+------------------------------------------------------------
+  Algorithm    : ORB
+  DoF          : translate_z
+  Frames       : 75
+  Total tracked: 387
+  Mean dx      : -1.990 px/frame (std=12.887)
+  Mean dy      : +0.077 px/frame (std=13.410)
+  Mean speed   : 17.269 px/frame
+  Direction    : -2.2deg
+  GT dx        : +0.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 1.990 px/frame
+  Error dy     : 0.077 px/frame
+------------------------------------------------------------
+
+  Running FrameDiff on translate_z ...
+
+------------------------------------------------------------
+  Algorithm    : FrameDiff
+  DoF          : translate_z
+  Frames       : 75
+  Total tracked: 1921
+  Mean dx      : -0.296 px/frame (std=2.099)
+  Mean dy      : +0.495 px/frame (std=1.990)
+  Mean speed   : 9.565 px/frame
+  Direction    : -59.1deg
+  GT dx        : +0.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 0.296 px/frame
+  Error dy     : 0.495 px/frame
+------------------------------------------------------------
+
+############################################################
+  DoF: rotate_yaw
+############################################################
+
+  Running BlobCentroid on rotate_yaw ...
+
+------------------------------------------------------------
+  Algorithm    : BlobCentroid
+  DoF          : rotate_yaw
+  Frames       : 75
+  Total tracked: 1512
+  Mean dx      : -3.516 px/frame (std=1.630)
+  Mean dy      : +0.394 px/frame (std=2.048)
+  Mean speed   : 7.000 px/frame
+  Direction    : -6.4deg
+  GT dx        : -5.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 1.484 px/frame
+  Error dy     : 0.394 px/frame
+------------------------------------------------------------
+
+  Running LucasKanade on rotate_yaw ...
+
+------------------------------------------------------------
+  Algorithm    : LucasKanade
+  DoF          : rotate_yaw
+  Frames       : 75
+  Total tracked: 592
+  Mean dx      : -0.344 px/frame (std=2.939)
+  Mean dy      : +0.001 px/frame (std=0.209)
+  Mean speed   : 0.434 px/frame
+  Direction    : -0.2deg
+  GT dx        : -5.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 4.656 px/frame
+  Error dy     : 0.001 px/frame
+------------------------------------------------------------
+
+  Running DenseFlow on rotate_yaw ...
+
+------------------------------------------------------------
+  Algorithm    : DenseFlow
+  DoF          : rotate_yaw
+  Frames       : 75
+  Total tracked: 1703
+  Mean dx      : -3.692 px/frame (std=1.505)
+  Mean dy      : +0.038 px/frame (std=0.665)
+  Mean speed   : 4.364 px/frame
+  Direction    : -0.6deg
+  GT dx        : -5.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 1.308 px/frame
+  Error dy     : 0.038 px/frame
+------------------------------------------------------------
+
+  Running ORB on rotate_yaw ...
+
+------------------------------------------------------------
+  Algorithm    : ORB
+  DoF          : rotate_yaw
+  Frames       : 75
+  Total tracked: 640
+  Mean dx      : -4.183 px/frame (std=9.946)
+  Mean dy      : +1.230 px/frame (std=8.473)
+  Mean speed   : 14.922 px/frame
+  Direction    : -16.4deg
+  GT dx        : -5.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 0.817 px/frame
+  Error dy     : 1.230 px/frame
+------------------------------------------------------------
+
+  Running FrameDiff on rotate_yaw ...
+
+------------------------------------------------------------
+  Algorithm    : FrameDiff
+  DoF          : rotate_yaw
+  Frames       : 75
+  Total tracked: 1609
+  Mean dx      : -2.797 px/frame (std=1.929)
+  Mean dy      : +0.514 px/frame (std=2.119)
+  Mean speed   : 7.832 px/frame
+  Direction    : -10.4deg
+  GT dx        : -5.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 2.203 px/frame
+  Error dy     : 0.514 px/frame
+------------------------------------------------------------
+
+############################################################
+  DoF: rotate_pitch
+############################################################
+
+  Running BlobCentroid on rotate_pitch ...
+
+------------------------------------------------------------
+  Algorithm    : BlobCentroid
+  DoF          : rotate_pitch
+  Frames       : 75
+  Total tracked: 1495
+  Mean dx      : -0.087 px/frame (std=1.873)
+  Mean dy      : +3.724 px/frame (std=2.037)
+  Mean speed   : 6.564 px/frame
+  Direction    : -88.7deg
+  GT dx        : +0.000 px/frame
+  GT dy        : +5.000 px/frame
+  Error dx     : 0.087 px/frame
+  Error dy     : 1.276 px/frame
+------------------------------------------------------------
+
+  Running LucasKanade on rotate_pitch ...
+
+------------------------------------------------------------
+  Algorithm    : LucasKanade
+  DoF          : rotate_pitch
+  Frames       : 75
+  Total tracked: 740
+  Mean dx      : -0.102 px/frame (std=0.657)
+  Mean dy      : -0.006 px/frame (std=0.148)
+  Mean speed   : 0.239 px/frame
+  Direction    : STATIONARY / ZOOM / ROLL
+  GT dx        : +0.000 px/frame
+  GT dy        : +5.000 px/frame
+  Error dx     : 0.102 px/frame
+  Error dy     : 5.006 px/frame
+------------------------------------------------------------
+
+  Running DenseFlow on rotate_pitch ...
+
+------------------------------------------------------------
+  Algorithm    : DenseFlow
+  DoF          : rotate_pitch
+  Frames       : 75
+  Total tracked: 1699
+  Mean dx      : +0.001 px/frame (std=0.665)
+  Mean dy      : +3.458 px/frame (std=0.561)
+  Mean speed   : 4.181 px/frame
+  Direction    : -90.0deg
+  GT dx        : +0.000 px/frame
+  GT dy        : +5.000 px/frame
+  Error dx     : 0.001 px/frame
+  Error dy     : 1.542 px/frame
+------------------------------------------------------------
+
+  Running ORB on rotate_pitch ...
+
+------------------------------------------------------------
+  Algorithm    : ORB
+  DoF          : rotate_pitch
+  Frames       : 75
+  Total tracked: 615
+  Mean dx      : -2.941 px/frame (std=12.756)
+  Mean dy      : +3.706 px/frame (std=7.862)
+  Mean speed   : 12.525 px/frame
+  Direction    : -51.6deg
+  GT dx        : +0.000 px/frame
+  GT dy        : +5.000 px/frame
+  Error dx     : 2.941 px/frame
+  Error dy     : 1.294 px/frame
+------------------------------------------------------------
+
+  Running FrameDiff on rotate_pitch ...
+
+------------------------------------------------------------
+  Algorithm    : FrameDiff
+  DoF          : rotate_pitch
+  Frames       : 75
+  Total tracked: 1670
+  Mean dx      : -0.086 px/frame (std=1.874)
+  Mean dy      : +2.883 px/frame (std=2.058)
+  Mean speed   : 7.448 px/frame
+  Direction    : -88.3deg
+  GT dx        : +0.000 px/frame
+  GT dy        : +5.000 px/frame
+  Error dx     : 0.086 px/frame
+  Error dy     : 2.117 px/frame
+------------------------------------------------------------
+
+############################################################
+  DoF: rotate_roll
+############################################################
+
+  Running BlobCentroid on rotate_roll ...
+
+------------------------------------------------------------
+  Algorithm    : BlobCentroid
+  DoF          : rotate_roll
+  Frames       : 75
+  Total tracked: 1529
+  Mean dx      : -0.210 px/frame (std=2.182)
+  Mean dy      : +0.495 px/frame (std=2.040)
+  Mean speed   : 7.934 px/frame
+  Direction    : -67.0deg
+  GT dx        : +0.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 0.210 px/frame
+  Error dy     : 0.495 px/frame
+------------------------------------------------------------
+
+  Running LucasKanade on rotate_roll ...
+
+------------------------------------------------------------
+  Algorithm    : LucasKanade
+  DoF          : rotate_roll
+  Frames       : 75
+  Total tracked: 592
+  Mean dx      : -0.282 px/frame (std=2.620)
+  Mean dy      : -0.010 px/frame (std=0.162)
+  Mean speed   : 0.418 px/frame
+  Direction    : STATIONARY / ZOOM / ROLL
+  GT dx        : +0.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 0.282 px/frame
+  Error dy     : 0.010 px/frame
+------------------------------------------------------------
+
+  Running DenseFlow on rotate_roll ...
+
+------------------------------------------------------------
+  Algorithm    : DenseFlow
+  DoF          : rotate_roll
+  Frames       : 75
+  Total tracked: 1712
+  Mean dx      : +0.017 px/frame (std=1.447)
+  Mean dy      : +0.150 px/frame (std=1.092)
+  Mean speed   : 4.904 px/frame
+  Direction    : STATIONARY / ZOOM / ROLL
+  GT dx        : +0.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 0.017 px/frame
+  Error dy     : 0.150 px/frame
+------------------------------------------------------------
+
+  Running ORB on rotate_roll ...
+
+------------------------------------------------------------
+  Algorithm    : ORB
+  DoF          : rotate_roll
+  Frames       : 75
+  Total tracked: 561
+  Mean dx      : -0.235 px/frame (std=10.380)
+  Mean dy      : -0.752 px/frame (std=9.424)
+  Mean speed   : 15.382 px/frame
+  Direction    : +72.6deg
+  GT dx        : +0.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 0.235 px/frame
+  Error dy     : 0.752 px/frame
+------------------------------------------------------------
+
+  Running FrameDiff on rotate_roll ...
+
+------------------------------------------------------------
+  Algorithm    : FrameDiff
+  DoF          : rotate_roll
+  Frames       : 75
+  Total tracked: 1820
+  Mean dx      : -0.066 px/frame (std=2.038)
+  Mean dy      : +0.325 px/frame (std=2.272)
+  Mean speed   : 8.770 px/frame
+  Direction    : -78.6deg
+  GT dx        : +0.000 px/frame
+  GT dy        : +0.000 px/frame
+  Error dx     : 0.066 px/frame
+  Error dy     : 0.325 px/frame
+------------------------------------------------------------
+
+====================================================================================================================
+  BENCHMARK RESULTS
+====================================================================================================================
+Algorithm        DoF                GT dx   GT dy   Est dx   Est dy   Err dx   Err dy  Err tot    Pts            Dir
+--------------------------------------------------------------------------------------------------------------------
+BlobCentroid     translate_x        -5.00   +0.00   -4.090   +0.346    0.910    0.346    0.974   1526        -4.8deg
+LucasKanade      translate_x        -5.00   +0.00   -0.189   -0.003    4.811    0.003    4.811    666 STATIONARY / ZOOM / ROLL
+DenseFlow        translate_x        -5.00   +0.00   -4.594   +0.063    0.406    0.063    0.411   1729        -0.8deg
+ORB              translate_x        -5.00   +0.00   -5.106   +1.135    0.106    1.135    1.140    653       -12.5deg
+FrameDiff        translate_x        -5.00   +0.00   -3.837   +0.272    1.163    0.272    1.194   1942        -4.0deg
+BlobCentroid     translate_y        +0.00   +5.00   -0.386   +4.573    0.386    0.427    0.576   1523       -85.2deg
+LucasKanade      translate_y        +0.00   +5.00   +0.001   -0.000    0.001    5.000    5.000    740 STATIONARY / ZOOM / ROLL
+DenseFlow        translate_y        +0.00   +5.00   -0.033   +4.530    0.033    0.470    0.471   1711       -89.6deg
+ORB              translate_y        +0.00   +5.00   -0.428   +2.702    0.428    2.298    2.338    659       -81.0deg
+FrameDiff        translate_y        +0.00   +5.00   -0.269   +3.710    0.269    1.290    1.317   2581       -85.9deg
+BlobCentroid     translate_z        +0.00   +0.00   -0.432   +0.392    0.432    0.392    0.583   1526       -42.2deg
+LucasKanade      translate_z        +0.00   +0.00   -0.451   -0.007    0.451    0.007    0.451    428        +0.9deg
+DenseFlow        translate_z        +0.00   +0.00   -0.440   +0.174    0.440    0.174    0.473   1739       -21.6deg
+ORB              translate_z        +0.00   +0.00   -1.990   +0.077    1.990    0.077    1.991    387        -2.2deg
+FrameDiff        translate_z        +0.00   +0.00   -0.296   +0.495    0.296    0.495    0.576   1921       -59.1deg
+BlobCentroid     rotate_yaw         -5.00   +0.00   -3.516   +0.394    1.484    0.394    1.536   1512        -6.4deg
+LucasKanade      rotate_yaw         -5.00   +0.00   -0.344   +0.001    4.656    0.001    4.656    592        -0.2deg
+DenseFlow        rotate_yaw         -5.00   +0.00   -3.692   +0.038    1.308    0.038    1.309   1703        -0.6deg
+ORB              rotate_yaw         -5.00   +0.00   -4.183   +1.230    0.817    1.230    1.477    640       -16.4deg
+FrameDiff        rotate_yaw         -5.00   +0.00   -2.797   +0.514    2.203    0.514    2.262   1609       -10.4deg
+BlobCentroid     rotate_pitch       +0.00   +5.00   -0.087   +3.724    0.087    1.276    1.279   1495       -88.7deg
+LucasKanade      rotate_pitch       +0.00   +5.00   -0.102   -0.006    0.102    5.006    5.007    740 STATIONARY / ZOOM / ROLL
+DenseFlow        rotate_pitch       +0.00   +5.00   +0.001   +3.458    0.001    1.542    1.542   1699       -90.0deg
+ORB              rotate_pitch       +0.00   +5.00   -2.941   +3.706    2.941    1.294    3.214    615       -51.6deg
+FrameDiff        rotate_pitch       +0.00   +5.00   -0.086   +2.883    0.086    2.117    2.119   1670       -88.3deg
+BlobCentroid     rotate_roll        +0.00   +0.00   -0.210   +0.495    0.210    0.495    0.538   1529       -67.0deg
+LucasKanade      rotate_roll        +0.00   +0.00   -0.282   -0.010    0.282    0.010    0.282    592 STATIONARY / ZOOM / ROLL
+DenseFlow        rotate_roll        +0.00   +0.00   +0.017   +0.150    0.017    0.150    0.151   1712 STATIONARY / ZOOM / ROLL
+ORB              rotate_roll        +0.00   +0.00   -0.235   -0.752    0.235    0.752    0.788    561       +72.6deg
+FrameDiff        rotate_roll        +0.00   +0.00   -0.066   +0.325    0.066    0.325    0.331   1820       -78.6deg
+
+--------------------------------------------------------------------------------------------------------------------
+MEAN ERROR       (across DoFs)                                        Err dx   Err dy  Err tot    Pts           Rank
+--------------------------------------------------------------------------------------------------------------------
+BlobCentroid                                                           0.585    0.555    0.914   9111
+LucasKanade                                                            1.717    1.671    3.368   3758
+DenseFlow                                                              0.368    0.406    0.726  10293
+ORB                                                                    1.086    1.131    1.824   3515
+FrameDiff                                                              0.680    0.835    1.300  11543
+
+  RANKING (lowest total error):
+    #1  DenseFlow         avg error = 0.726 px/frame
+    #2  BlobCentroid      avg error = 0.914 px/frame
+    #3  FrameDiff         avg error = 1.300 px/frame
+    #4  ORB               avg error = 1.824 px/frame
+    #5  LucasKanade       avg error = 3.368 px/frame
+====================================================================================================================
+
+  CSV saved to: C:\Users\abrah\programming\FYP\claude\track\output\benchmark.csv

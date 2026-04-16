@@ -1,0 +1,10 @@
+  PDR Training
+  Epochs=2  Samples=20  Batch=2  LR=0.001
+  ** SMOKE TEST mode **
+  Device : cpu
+  Params : 7,762,753
+  Epoch   1/2  loss=0.443706  (32.9s)  [saved]
+  Epoch   2/2  loss=0.340937  (33.3s)  [saved]
+
+  Best loss : 0.340937
+  Checkpoint: C:\Users\abrah\programming\FYP\claude\pdr\checkpoints\pdr_model.pt
