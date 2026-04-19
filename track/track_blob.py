@@ -13,6 +13,7 @@ Usage:
 
 from __future__ import annotations
 
+import csv
 import sys
 from pathlib import Path
 
@@ -106,6 +107,8 @@ def run_dof(dof_name: str) -> TrackingResult:
     prev_pts: list[tuple[int, float, float]] = []
     next_id = 0
 
+    tracks: list[tuple[int, int, float, float]] = []
+
     with AnnotatedVideoWriter(out_dir / f"{dof_name}_blob.mp4") as vw:
         for fi, frame in enumerate(frames):
             gray = to_gray(frame)
@@ -131,10 +134,21 @@ def run_dof(dof_name: str) -> TrackingResult:
             )
             result.frame_results.append(fr)
 
+            for pid, cx, cy, _, _ in matched:
+                tracks.append((fi, pid, cx, cy))
+
             vw.write(frame, fr, algo="BlobCentroid", dof=dof_name)
 
             # Carry forward
             prev_pts = [(m[0], m[1], m[2]) for m in matched]
+
+    track_csv = out_dir / f"{dof_name}_blob_tracks.csv"
+    with open(track_csv, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["frame", "point_id", "x", "y"])
+        writer.writerows(tracks)
+
+    print(f"  Track CSV: {track_csv}")
 
     print_summary(result)
     return result

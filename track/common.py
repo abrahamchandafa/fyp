@@ -2,13 +2,15 @@
 Shared utilities for all tracking scripts.
 
 Every tracker script imports this module, which provides:
-  - Calibration constants
+  - Calibration constants (edit these to match your generation settings)
   - Frame loading from a folder of PNGs
   - Ground-truth motion definitions for each DoF
   - Common data structures for tracking results
   - Video writer helper
   - Console reporting helper
 """
+
+from __future__ import annotations
 
 import math
 from dataclasses import dataclass, field
@@ -18,14 +20,14 @@ import cv2
 import numpy as np
 
 # ═══════════════════════════════════════════════════════════════════════
-#  CALIBRATION CONSTANTS  — in sync with generation/generate.py
+#  CALIBRATION CONSTANTS  —  keep in sync with generation/generate.py
 # ═══════════════════════════════════════════════════════════════════════
 
 IMAGE_WIDTH: int = 640
 IMAGE_HEIGHT: int = 480
 FPS: int = 15
 DURATION_S: int = 5
-N_FRAMES: int = FPS * DURATION_S
+N_FRAMES: int = FPS * DURATION_S  # 75
 
 # Generation motion rates (ground truth)
 GT_SHIFT_RATE: float = 5.0  # px/frame for translations
@@ -55,10 +57,10 @@ class GroundTruth:
     is_zoom: bool = False
 
 
-# The generator shifts dots; from the camera's perspective the estimated
-# motion should be the opposite sign (camera moves right → dots slide left,
+# The generator shifts dots; from the camera's perspective the *estimated*
+# motion should be the *opposite* sign (camera moves right → dots slide left,
 # so tracker sees negative dx → infers camera moved right = +dx).
-# We store the dot-level ground-truth here (what the tracker should measure
+# We store the *dot-level* ground-truth here (what the tracker should measure
 # on dots directly).
 GROUND_TRUTHS: dict[str, GroundTruth] = {
     "translate_x": GroundTruth(
