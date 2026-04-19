@@ -1,17 +1,15 @@
 """
-Train the PDR model on synthetic diffusion-reversal pairs.
+Train the Projection-Diffusion Reversal (PDR) model on synthetic diffusion-reversal pairs.
 
 Quick smoke test (local laptop):
     python pdr/train.py --smoke
 
-Full training (Google Colab recommended):
-    python pdr/train.py --epochs 50 --samples 10000 --batch 8
+Full trainin:
+python pdr/train.py --epochs 50 --samples 10000 --batch 8
 
 The trained checkpoint is saved to:
     pdr/checkpoints/pdr_model.pt
 """
-
-from __future__ import annotations
 
 import argparse
 import sys
@@ -20,13 +18,13 @@ from pathlib import Path
 
 import torch
 import torch.nn as nn
+from dataset import SyntheticPairDataset
+from model import PDRNet
 from torch.utils.data import DataLoader
 
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
-from dataset import SyntheticPairDataset
-from model import PDRNet
 
 CKPT_DIR = ROOT / "checkpoints"
 

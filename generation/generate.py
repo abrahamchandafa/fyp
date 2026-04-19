@@ -7,12 +7,10 @@ For each degree of freedom, generates a sequence of frames where:
   3. Fresh dots are deposited.
   4. The frame is rendered and saved.
 
-This produces 75 PNG images and one 5-second MP4 video per DoF.
-
 Output layout
 ─────────────
     generation/output/
-        translate_x/frames/frame_0000.png … frame_0074.png
+        translate_x/frames/frame_0000.png … frame_xx.png
         translate_x/translate_x.mp4
         translate_y/…
         translate_z/…
@@ -31,43 +29,44 @@ from pathlib import Path
 
 import cv2
 import numpy as np
+from scipy.stats import qmc
 
 # ═══════════════════════════════════════════════════════════════════════
-#  GLOBAL CONSTANTS  —  edit these to control the output
+#  GLOBAL CONSTANTS  —  can be edited to control the output
 # ═══════════════════════════════════════════════════════════════════════
 
-# Frame dimensions
-IMAGE_WIDTH: int = 640  # pixels
-IMAGE_HEIGHT: int = 480  # pixels
+# Frame dimensions in pixels
+IMAGE_WIDTH: int = 640
+IMAGE_HEIGHT: int = 480
 
 # Timing
-FPS: int = 15  # frames per second
-DURATION_S: int = 5  # video length in seconds
-N_FRAMES: int = FPS * DURATION_S  # total frames per DoF (75)
+FPS: int = 15
+DURATION_S: int = 5
+N_FRAMES: int = FPS * DURATION_S
 
 # Dot generation
-N_DOTS_PER_FRAME: int = 3  # new dots deposited every frame
-INITIAL_INTENSITY: float = 220.0  # peak brightness of a fresh dot (0–255)
-INITIAL_RADIUS: float = 8.0  # Gaussian σ of a fresh dot (pixels)
-MARGIN: int = 50  # keep new dots at least this far from edges
+N_DOTS_PER_FRAME: int = 3
+INITIAL_INTENSITY: float = 200.0
+INITIAL_RADIUS: float = 7.0
+MARGIN: int = 50
 
-# Motion rates (applied per frame)
+# Motion rates
 SHIFT_RATE: float = 5.0  # translation shift (pixels / frame)
 ROTATION_RATE: float = 0.025  # roll rotation (radians / frame)
 ZOOM_RATE: float = 0.035  # radial expansion factor / frame (translate-Z)
 
-# Erosion (applied per frame)
-FADE_FACTOR: float = 0.85  # intensity multiplier  (< 1 → fade)
-ERODE_FACTOR: float = 0.90  # radius multiplier     (< 1 → shrink)
-MIN_INTENSITY: float = 8.0  # prune dots dimmer than this
-MIN_RADIUS: float = 0.8  # prune dots smaller than this
+# Erosion
+FADE_FACTOR: float = 0.85
+ERODE_FACTOR: float = 0.90
+MIN_INTENSITY: float = 20.0
+MIN_RADIUS: float = 4
 
 # Visual
-COLORMAP: int = cv2.COLORMAP_HOT  # thermal palette
+COLORMAP: int = cv2.COLORMAP_HOT
 
 # Output
 OUTPUT_DIR: Path = Path(__file__).resolve().parent / "output"
-RNG_SEED: int = 42  # for reproducibility
+RNG_SEED: int = 42
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -154,31 +153,30 @@ DOF_REGISTRY: dict[str, object] = {
 
 
 def erode_dots(dots: list[Dot]) -> list[Dot]:
-    """Fade intensity, shrink radius, prune invisible / off-screen dots."""
+    """Fade intensity, shrink radius, keep dots on-screen at their minimum values."""
     surviving: list[Dot] = []
     for d in dots:
-        d.intensity = max(MIN_INTENSITY, d.intensity * FADE_FACTOR)
-        d.radius = max(MIN_RADIUS, d.radius * ERODE_FACTOR)
-        if (
-            d.intensity >= MIN_INTENSITY
-            and d.radius >= MIN_RADIUS
-            and 0 <= d.x < IMAGE_WIDTH
-            and 0 <= d.y < IMAGE_HEIGHT
-        ):
+        d.intensity *= FADE_FACTOR
+        d.radius *= ERODE_FACTOR
+        if d.intensity < MIN_INTENSITY:
+            d.intensity = MIN_INTENSITY
+        if d.radius < MIN_RADIUS:
+            d.radius = MIN_RADIUS
+        if 0 <= d.x < IMAGE_WIDTH and 0 <= d.y < IMAGE_HEIGHT:
             surviving.append(d)
     return surviving
 
 
-def spawn_dots(rng: np.random.Generator) -> list[Dot]:
-    """Create N_DOTS_PER_FRAME fresh dots at random positions."""
+def spawn_dots(points: np.ndarray) -> list[Dot]:
+    """Create N_DOTS_PER_FRAME fresh dots at Halton-sampled positions."""
     return [
         Dot(
-            x=float(rng.uniform(MARGIN, IMAGE_WIDTH - MARGIN)),
-            y=float(rng.uniform(MARGIN, IMAGE_HEIGHT - MARGIN)),
+            x=float(x),
+            y=float(y),
             intensity=INITIAL_INTENSITY,
             radius=INITIAL_RADIUS,
         )
-        for _ in range(N_DOTS_PER_FRAME)
+        for x, y in points
     ]
 
 
@@ -219,19 +217,25 @@ def generate_dof_sequence(
     frames_dir = OUTPUT_DIR / dof_name / "frames"
     frames_dir.mkdir(parents=True, exist_ok=True)
 
+    halton = qmc.Halton(d=2, scramble=True, rng=rng)
     dots: list[Dot] = []
 
     for fi in range(N_FRAMES):
-        # 1. Shift existing dots (simulates camera motion)
+        # 1. Shift existing dots (camera motion simulation)
         shift_fn(dots)
 
-        # 2. Erode existing dots (simulates heat dissipation)
+        # 2. Erode existing dots (heat dissipation simulaton)
         dots = erode_dots(dots)
 
         # 3. Deposit fresh dots
-        dots.extend(spawn_dots(rng))
+        sample = halton.random(n=N_DOTS_PER_FRAME)
+        points = qmc.scale(
+            sample,
+            [MARGIN, MARGIN],
+            [IMAGE_WIDTH - MARGIN, IMAGE_HEIGHT - MARGIN],
+        )
+        dots.extend(spawn_dots(points))
 
-        # 4. Render
         image = render(dots)
 
         # Label overlay
@@ -246,10 +250,9 @@ def generate_dof_sequence(
             cv2.LINE_AA,
         )
 
-        # 5. Save frame
         cv2.imwrite(str(frames_dir / f"frame_{fi:04d}.png"), image)
 
-    # ── Compile video from saved frames ────────────────────────────────
+    # Compile video
     video_path = OUTPUT_DIR / dof_name / f"{dof_name}.mp4"
     fourcc = cv2.VideoWriter_fourcc(*"mp4v")
     writer = cv2.VideoWriter(str(video_path), fourcc, FPS, (IMAGE_WIDTH, IMAGE_HEIGHT))
@@ -259,11 +262,6 @@ def generate_dof_sequence(
     writer.release()
 
     print(f"    {dof_name}: {N_FRAMES} frames + video -> {video_path}")
-
-
-# ═══════════════════════════════════════════════════════════════════════
-#  Entry point
-# ═══════════════════════════════════════════════════════════════════════
 
 
 def main() -> None:
@@ -284,8 +282,7 @@ def main() -> None:
         rng = np.random.default_rng(RNG_SEED)
         generate_dof_sequence(dof_name, shift_fn, rng)
 
-    print()
-    print("  Done. 6 DoFs x 75 frames = 450 images + 6 videos.")
+    print("Done.")
 
 
 if __name__ == "__main__":

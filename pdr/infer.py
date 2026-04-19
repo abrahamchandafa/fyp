@@ -9,12 +9,7 @@ Usage:
 Input frames  :  generation/output/{dof}/frames/frame_XXXX.png
 Output frames :  pdr/output/{dof}/frames/frame_XXXX.png
 Output video  :  pdr/output/{dof}/{dof}_corrected.mp4
-
-If you trained on Google Colab, copy the checkpoint to:
-    pdr/checkpoints/pdr_model.pt
 """
-
-from __future__ import annotations
 
 import sys
 from pathlib import Path
@@ -22,11 +17,11 @@ from pathlib import Path
 import cv2
 import numpy as np
 import torch
+from model import PDRNet
 
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
-from model import PDRNet
 
 # -- paths -----------------------------------------------------------------
 GEN_OUTPUT = ROOT.parent / "generation" / "output"
@@ -35,7 +30,7 @@ CKPT_PATH = ROOT / "checkpoints" / "pdr_model.pt"
 
 # -- video settings (match generation/generate.py) -------------------------
 FPS = 15
-COLORMAP = cv2.COLORMAP_INFERNO
+COLORMAP = cv2.COLORMAP_HOT
 
 ALL_DOFS = [
     "translate_x",

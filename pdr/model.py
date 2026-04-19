@@ -14,8 +14,6 @@ Final    : 1x1 conv -> sigmoid
 Compatible with 640x480 input (divisible by 16).
 """
 
-from __future__ import annotations
-
 import torch
 import torch.nn as nn
 

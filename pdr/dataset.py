@@ -5,30 +5,22 @@ Each sample
 -----------
   input  :  (2, H, W)  -- two consecutive *diffused* grayscale frames [0, 1]
   target :  (1, H, W)  -- the *clean* (pre-diffusion) second frame    [0, 1]
-
-Dot scenes are randomly generated with the same Gaussian rendering and
-fade/erode parameters used in ``generation/generate.py``, so the model
-learns the exact inverse of the diffusion that was applied.
-
-Training data is unlimited and deterministic per sample index.
 """
-
-from __future__ import annotations
 
 import numpy as np
 import torch
 from torch.utils.data import Dataset
 
-# ── constants (must match generation/generate.py) ────────────────────
+# constants (must match generation/generate.py)
 IMAGE_W: int = 640
 IMAGE_H: int = 480
-INITIAL_INTENSITY: float = 220.0
+INITIAL_INTENSITY: float = 200.0
 INITIAL_RADIUS: float = 8.0
 FADE_FACTOR: float = 0.85
 ERODE_FACTOR: float = 0.90
-MIN_INTENSITY: float = 8.0
-MIN_RADIUS: float = 0.5
-MARGIN: int = 30
+MIN_INTENSITY: float = 20.0
+MIN_RADIUS: float = 4.0
+MARGIN: int = 50
 
 
 # ── rendering helpers ─────────────────────────────────────────────────
@@ -39,10 +31,10 @@ def render_dots(
     h: int = IMAGE_H,
     w: int = IMAGE_W,
 ) -> np.ndarray:
-    """Render *dots* as 2-D Gaussians on a [0, 1] float32 image.
+    """Render dots as 2-D Gaussians on a [0, 1] float32 image.
 
-    Each dot is ``(cx, cy, intensity, radius)`` where *intensity* is on
-    the 0-255 scale and *radius* is the Gaussian sigma in pixels.
+    Each dot is ``(cx, cy, intensity, radius)`` where intensity is on
+    the 0-255 scale and radius is the Gaussian sigma in pixels.
     """
     img = np.zeros((h, w), dtype=np.float32)
     for cx, cy, intensity, radius in dots:
@@ -103,15 +95,15 @@ def shift_dots(
 class SyntheticPairDataset(Dataset):
     """Deterministic, on-the-fly synthetic training data.
 
-    For each sample index *idx*:
+    For each sample index idx:
 
-    1. Generate a random dot scene at time *t*.
-    2. Shift dots by a small random (dx, dy) -> positions at *t+1*.
-    3. Spawn 1-3 fresh dots at *t+1*.
-    4. Render the **clean** *t+1* scene -> ``target``.
-    5. Apply one diffusion step to both *t* and *t+1* -> render ->
-       ``diffused_t``, ``diffused_t1``.
-    6. Return ``(stack(diffused_t, diffused_t1), target)``.
+    1. Generate a random dot scene at time t.
+    2. Shift dots by a small random (dx, dy) -> positions at t+1.
+    3. Spawn 1-3 fresh dots at t+1.
+    4. Render the clean t+1 scene -> target.
+    5. Apply one diffusion step to both t and t+1 -> render ->
+       diffused_t, diffused_t1.
+    6. Return (stack(diffused_t, diffused_t1), target).
     """
 
     def __init__(self, length: int = 2000, seed: int = 0) -> None:
@@ -131,7 +123,7 @@ class SyntheticPairDataset(Dataset):
         dx = float(rng.uniform(-6, 6))
         dy = float(rng.uniform(-6, 6))
 
-        # 3) dots at t+1 *before* diffusion = CLEAN target
+        # 3) dots at t+1 before diffusion = CLEAN target
         dots_t1_clean = shift_dots(dots_t, dx, dy)
         for _ in range(int(rng.integers(1, 4))):
             cx = float(rng.uniform(MARGIN, IMAGE_W - MARGIN))
