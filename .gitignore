@@ -11,3 +11,6 @@ wheels/
 *.png
 *.mp4
 .VSCodeCounter
+
+*.csv
+*.txt

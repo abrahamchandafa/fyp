@@ -11,8 +11,6 @@ Usage:
     python track/benchmark.py translate_x        # single DoF only
 """
 
-from __future__ import annotations
-
 import csv
 import sys
 from pathlib import Path
@@ -23,7 +21,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from common import GROUND_TRUTHS, TrackingResult
 
-# Import each tracker's run_dof function
+#  each tracker's run_dof function
 from track_blob import run_dof as blob_run
 from track_dense_flow import run_dof as dense_run
 from track_framediff import run_dof as framediff_run

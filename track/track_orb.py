@@ -38,7 +38,7 @@ ORB_N_LEVELS: int = 8
 RATIO_THRESHOLD: float = 0.75  # Lowe's ratio test
 MAX_MATCH_DIST: float = 80.0  # pixel distance sanity check
 
-GEN_OUTPUT = Path(__file__).resolve().parent.parent / "generation" / "output"
+GEN_OUTPUT = Path(__file__).resolve().parent.parent / "pdr" / "output"
 TRACK_OUTPUT = Path(__file__).resolve().parent / "output" / "orb"
 
 

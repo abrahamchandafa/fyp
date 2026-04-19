@@ -41,7 +41,7 @@ DIFF_THRESHOLD: int = 25  # binary threshold on |frame_diff|
 GATE_DISTANCE: float = 60.0  # max match distance (px)
 MORPH_KERNEL: int = 5
 
-GEN_OUTPUT = Path(__file__).resolve().parent.parent / "generation" / "output"
+GEN_OUTPUT = Path(__file__).resolve().parent.parent / "pdr" / "output"
 TRACK_OUTPUT = Path(__file__).resolve().parent / "output" / "framediff"
 
 

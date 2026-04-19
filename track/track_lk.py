@@ -42,7 +42,7 @@ LK_WIN_SIZE: tuple[int, int] = (21, 21)
 LK_MAX_LEVEL: int = 3
 LK_CRITERIA = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 30, 0.01)
 
-GEN_OUTPUT = Path(__file__).resolve().parent.parent / "generation" / "output"
+GEN_OUTPUT = Path(__file__).resolve().parent.parent / "pdr" / "output"
 TRACK_OUTPUT = Path(__file__).resolve().parent / "output" / "lucas_kanade"
 
 

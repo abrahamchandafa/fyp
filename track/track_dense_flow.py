@@ -46,7 +46,7 @@ FARNEBACK_POLY_SIGMA: float = 1.2
 
 FLOW_MAG_THRESHOLD: float = 0.5  # ignore flow below this (noise)
 
-GEN_OUTPUT = Path(__file__).resolve().parent.parent / "generation" / "output"
+GEN_OUTPUT = Path(__file__).resolve().parent.parent / "pdr" / "output"
 TRACK_OUTPUT = Path(__file__).resolve().parent / "output" / "dense_flow"
 
 

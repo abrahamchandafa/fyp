@@ -23,8 +23,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import (
     BRIGHTNESS_THRESHOLD,
     GROUND_TRUTHS,
-    IMAGE_HEIGHT,
-    IMAGE_WIDTH,
     MAX_BLOB_AREA,
     MIN_BLOB_AREA,
     AnnotatedVideoWriter,
@@ -42,7 +40,7 @@ GATE_DISTANCE: float = 60.0  # max px a point can travel between frames
 MORPH_KERNEL: int = 3  # morphological cleanup kernel size
 
 # I/O
-GEN_OUTPUT = Path(__file__).resolve().parent.parent / "generation" / "output"
+GEN_OUTPUT = Path(__file__).resolve().parent.parent / "pdr" / "output"
 TRACK_OUTPUT = Path(__file__).resolve().parent / "output" / "blob"
 
 
