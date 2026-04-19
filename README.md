@@ -46,7 +46,7 @@ Benchmark & Error Metrics
 
 **Key Classes**:
 - `Dot`: Represents a thermal dot with position and fade properties
-- `Shift*` functions: Define transformations for each degree of freedom
+- `Shift` functions: Define transformations for each degree of freedom
 
 **Parameters**:
 - `SHIFT_RATE = 5.0`: Pixels per frame for translation
@@ -104,6 +104,8 @@ rotate_roll: 75 frames + video -> generation/output/rotate_roll/
 ---
 
 ### 3. Tracking Module (`track/track_blob.py`)
+
+**Approach**: Various tracking modules were evaluated, including optical flow, frame differencing, and feature-based methods, and persistent blob centroid tracking was chosen for robustness on synthetic thermal dot sequences.
 
 **Purpose**: Persistent centroid-based tracking of thermal blobs across frames
 
@@ -327,8 +329,8 @@ rotate_roll          75/75              3.7                2.3
 ### Installation
 ```bash
 # Clone repository
-git clone <repo>
-cd claude
+git clone https://github.com/abrahamchandafa/fyp
+cd fyp
 
 # Install dependencies
 uv sync
@@ -339,7 +341,7 @@ python -c "import cv2; import torch; import numpy; print('OK')"
 
 ### Project Structure
 ```
-claude/
+fyp/
 ├── generation/          # Synthetic 6-DoF thermal dot sequences
 │   ├── generate.py      # Main generation script
 │   ├── output/          # Generated frames and videos
@@ -386,13 +388,17 @@ claude/
 cd generation
 uv run ./generate.py
 
-# Step 2: Track blobs for all DoF sequences
+# Step 2: Projection-Diffusion Reversal
+cd ../pdr
+uv run ./benchmark.py
+
+# Step 3: Track blobs for all DoF sequences
 cd ../track
 for dof in translate_x translate_y translate_z rotate_yaw rotate_pitch rotate_roll; do
     uv run ./track_blob.py $dof
 done
 
-# Step 3: Benchmark pose estimation
+# Step 4: Benchmark pose estimation
 cd ../pose
 uv run ./benchmark.py
 ```
@@ -418,16 +424,6 @@ python -c "from pose_slam import run_dof; run_dof('translate_x')"
 ```bash
 # All tests
 pytest tests/ -v
-
-# Specific module tests
-pytest tests/test_generation.py -v    # 16 tests
-pytest tests/test_track.py -v         # 22 tests
-pytest tests/test_pose.py -v          # 15 tests
-pytest tests/test_pdr.py -v           # 26 tests
-
-# With coverage
-pytest tests/ --cov=generation --cov=track --cov=pose --cov=pdr -v
-```
 
 ---
 
