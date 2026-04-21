@@ -1,5 +1,5 @@
 [project]
-name = "thermal-tracker"
+name = "fyp"
 version = "0.1.0"
 description = "Infrastructure-free AR headset tracking using thermal sensors"
 readme = "README.md"
