@@ -127,6 +127,10 @@ def triangulate_point(
     pts_a = pt_a.reshape(2, 1)
     pts_b = pt_b.reshape(2, 1)
     X_h = cv2.triangulatePoints(P_a, P_b, pts_a, pts_b)
+
+    if abs(X_h[3]) < 1e-10:
+        return None
+
     X = (X_h[:3] / X_h[3]).reshape(3)
 
     total_error = 0.0
@@ -142,6 +146,8 @@ def triangulate_point(
     if checks == 0:
         return None
     if total_error / checks > MAX_REPROJ_ERROR:
+        return None
+    if X[2] <= 0:
         return None
 
     return X

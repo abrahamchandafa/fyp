@@ -362,8 +362,7 @@ fyp/
 ├── pose/                # SLAM pose estimation
 │   ├── pose_slam.py     # Main SLAM pipeline
 │   ├── common.py        # Pose utilities and metrics
-│   ├── benchmark.py     # Benchmark against ground truth
-│   └── checkpoints/     # (Legacy) old model files
+│   └── benchmark.py     # Benchmark against ground truth
 │
 ├── tests/               # Comprehensive test suite (88 tests)
 │   ├── test_generation.py  # 16 tests
@@ -373,8 +372,7 @@ fyp/
 │   └── conftest.py         # Pytest configuration
 │
 ├── pyproject.toml       # Project metadata and dependencies
-├── README.md            # This file
-└── main.py              # (Optional) Entry point script
+└── README.md            # This file
 ```
 
 ---

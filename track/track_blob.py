@@ -11,8 +11,6 @@ Usage:
     python track/track_blob.py translate_x rotate_roll   # subset
 """
 
-from __future__ import annotations
-
 import csv
 import sys
 from pathlib import Path

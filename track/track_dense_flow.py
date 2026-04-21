@@ -11,8 +11,6 @@ Usage:
     python track/track_dense_flow.py translate_x
 """
 
-from __future__ import annotations
-
 import sys
 from pathlib import Path
 
@@ -23,8 +21,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import (
     BRIGHTNESS_THRESHOLD,
     GROUND_TRUTHS,
-    IMAGE_HEIGHT,
-    IMAGE_WIDTH,
     MIN_BLOB_AREA,
     AnnotatedVideoWriter,
     FrameResult,
